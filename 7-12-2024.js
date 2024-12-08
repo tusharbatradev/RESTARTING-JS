@@ -196,7 +196,12 @@ let newStr = str.filter((i)=>{
 })
 console.log(newStr);
 
-// 7 Filter Unique Values
-// Given an array of numbers, return a new array containing only the unique values (no duplicates).
-let numbs = [12,11,2,12,11,126,5,89,54,6];
-
+// 7. Filter Words by Length
+// Given an array of words, return a new array containing only the words that have exactly 5 letters.
+let words = ['Tushar','Riyaa','Vivan','Aman','John','Doeee']
+let fiveLettersWords = words.filter((item)=>{
+    if(item.length === 5){
+        return item
+    }
+})
+console.log(fiveLettersWords)
