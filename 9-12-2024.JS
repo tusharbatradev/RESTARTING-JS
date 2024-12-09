@@ -46,3 +46,17 @@ fetch("https://dummyjson.com/products")
     // })
     // console.log(outOfStockProduct)
   });
+
+
+
+// Async and await 
+async function fetchData(){
+    try{
+        const response = await fetch('https://dummyjson.com/products');
+        const data = await response.json();
+        console.log('Data' ,data)
+    } catch(error){
+        console.error('Error:', error);
+    }
+}
+fetchData()
