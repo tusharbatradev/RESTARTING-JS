@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+  </head>
+  <body
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <h1>Calculator</h1>
+    <div style="display: flex; gap: 8px; margin-bottom: 12px">
+      <input type="number" id="num1" />
+      <input type="number" id="num2" />
+      <button onclick="handleEsc()">ESC</button>
+    </div>
+
+    <div style="display: flex; gap: 24px">
+      <button
+        style="
+          height: 40px;
+          width: 50px;
+          background-color: black;
+          color: whitesmoke;
+        "
+        onclick="handleCalculation('+')"
+      >
+        +
+      </button>
+      <button
+        style="
+          height: 40px;
+          width: 50px;
+          background-color: black;
+          color: whitesmoke;
+        "
+        onclick="handleCalculation('-')"
+      >
+        -
+      </button>
+      <button
+        style="
+          height: 40px;
+          width: 50px;
+          background-color: black;
+          color: whitesmoke;
+        "
+        onclick="handleCalculation('/')"
+      >
+        /
+      </button>
+      <button
+        style="
+          height: 40px;
+          width: 50px;
+          background-color: black;
+          color: whitesmoke;
+        "
+        onclick="handleCalculation('*')"
+      >
+        *
+      </button>
+    </div>
+    <h2>Answer:- <span id="answer"></span></h2>
+
+    <script src="script.js"></script>
+  </body>
+</html>
