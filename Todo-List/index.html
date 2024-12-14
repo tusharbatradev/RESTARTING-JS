@@ -6,10 +6,23 @@
     <title>Todo-List</title>
   </head>
   <body>
-    <input placeholder="Enter Your Username" type="text" id="Username" />
-    <input placeholder="Enter Your Password" type="password" id="password" />
-    <button onclick="handleLogin()">Login!</button>
-    <h2 id="message"></h2>
+    <div
+      style="
+        height: 97vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 12px;
+        background-color: bisque;
+      "
+    >
+      <h1>Login to go ahead</h1>
+      <input placeholder="Enter Your Username" type="text" id="Username" />
+      <input placeholder="Enter Your Password" type="password" id="password" />
+      <button onclick="handleLogin()">Login!</button>
+      <h2 id="message"></h2>
+    </div>
 
     <script src="script.js"></script>
   </body>

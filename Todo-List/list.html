@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <input type="text" id="newTodo" placeholder="Enter a new todo">
-    <button onclick="handleAddTodo()">Add</button>
+  </head>
+  <body>
+    <div
+      style="
+        height: 97vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 12px;
+        background-color: bisque;
+      "
+    >
+      <div style="display: flex; gap: 8px">
+        <input
+          style=" 
+            border-radius: 8px;
+            border: 0px;
+            color: brown;
+            padding: 10px;
+          "
+          type="text"
+          id="newTodo"
+          placeholder="Enter a new todo"
+        />
+        <button
+          style="
+            height: 40px;
+            width: 40px;
+            border-radius: 8px;
+            border: 0px;
+            background-color: brown;
+            color: white;
+          "
+          onclick="handleAddTodo()"
+        >
+          +
+        </button>
+      </div>
 
-    <h1>Your Todos</h1>
-    <ol id="todo-list"></ol>
+      <h1>Your Todos</h1>
+      <ol id="todo-list"></ol>
+    </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

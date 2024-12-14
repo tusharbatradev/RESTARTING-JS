@@ -4,7 +4,7 @@ let password = document.getElementById("password");
 let login = false;
 
 function handleLogin() {
-  if (username.value === "tushar" && password.value === "Tushar@123") {
+  if (username.value === "tushar" && password.value === "Tushar@123" || username.value === "kanak" && password.value === "Kanak@123") {
     document.getElementById("message").innerHTML = "Login Successful";
     login = true;
     console.log(login);
