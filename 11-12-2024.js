@@ -1,39 +1,15 @@
 // Closures in javascript
 
-function outerFunction() {
+function outerFunction(a) {
     var outerVariable = "I'm outside!";
     
-    function innerFunction() {
-        console.log(outerVariable);
+    function innerFunction(b) {
+        console.log(a+b);
     }
     
-    innerFunction();
+    return innerFunction
 }
 
-outerFunction();
+outerFunction(2)(2);
 
 
-function outerFunction() {
-    var outerVariable = "I'm outside!";
-    
-    function innerFunction() {
-        console.log(outerVariable);
-    }
-    
-    return innerFunction;
-}
-
-var inner = outerFunction();
-inner();
-
-function outer() {
-    let a = 10;
-    function inner() {
-        let b = 20;
-        console.log(a + b);
-    }
-    return inner;
-}
-
-const innerFunc = outer();
-innerFunc();
