@@ -1,13 +1,55 @@
-const http = require("http");
+const express = require("express");
+const app = express();
+const morgan = require("morgan");
 
-const server = http.createServer((req, res) => {
-  if (req.url == "/about") {
-    res.end("This is About Page");
-  } else if (req.url == "/profile") {
-    res.end("This is a Profile Page");
-  } else if (req.url == "/") {
-    res.end("Hello World!");
+// Use morgan for logging
+app.use(morgan("dev"));
+
+// Set the view engine to EJS
+app.set("view engine", "ejs");
+
+// Middleware to parse URL-encoded data
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware to parse JSON data
+app.use(express.json());
+
+// Example middleware (currently commented out)
+// app.use((req, res, next) => {
+//   console.log("This is Middleware");
+//   let a = 2;
+//   let b = 3;
+//   console.log(a + b);
+//   return next();
+// });
+
+app.get(
+  "/",
+  (req, res, next) => {
+    const a = 5;
+    const b = 2;
+    console.log(a + b);
+    next();
+  },
+  (req, res) => {
+    res.render("index");
   }
+);
+
+app.get("/about", (req, res) => {
+  res.send("This is About Page");
 });
 
-server.listen(3000);
+app.get("/profile", (req, res) => {
+  res.send("This is Profile Page");
+});
+
+app.post("/get-form-data", (req, res) => {
+  console.log(req.body); 
+  res.send("Data received");
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
