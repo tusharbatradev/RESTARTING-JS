@@ -1,6 +1,12 @@
 const express = require("express");
-const app = express();
 const morgan = require("morgan");
+const userModel = require("./models/user");
+const connectToDB = require("./config/db");
+
+const app = express();
+
+// Connect to the database
+connectToDB();
 
 // Use morgan for logging
 app.use(morgan("dev"));
@@ -13,15 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to parse JSON data
 app.use(express.json());
-
-// Example middleware (currently commented out)
-// app.use((req, res, next) => {
-//   console.log("This is Middleware");
-//   let a = 2;
-//   let b = 3;
-//   console.log(a + b);
-//   return next();
-// });
+app.use(express.static("public"));
 
 app.get(
   "/",
@@ -45,11 +43,12 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/get-form-data", (req, res) => {
-  console.log(req.body); 
+  console.log(req.body);
   res.send("Data received");
 });
 
 // Start the server
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
