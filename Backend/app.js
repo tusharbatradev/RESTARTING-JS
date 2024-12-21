@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const userModel = require("./models/user");
-const connectToDB = require("./config/db");
+const connectToDB = require("./config/db")
 
 const app = express();
 
