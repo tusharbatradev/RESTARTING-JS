@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
   console.log("Redux State:", movies);
-  
+
   return (
     <div className="bg-black">
       <div className="pl-12 mt-[-280px] relative z-20">
