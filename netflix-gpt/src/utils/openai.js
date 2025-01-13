@@ -1,7 +1,7 @@
 import axios from "axios";
 import { OPENAI_KEY } from "./constants";
-
-const API_URL = "https://api.aimlapi.com/v1/chat/completions";
+import { setAiResponse } from "./GptSlice";
+import { AI_API_URL } from "./constants";
 
 export const sendMessage = async (userMessage, dispatch) => {
   try {
@@ -10,14 +10,14 @@ export const sendMessage = async (userMessage, dispatch) => {
 
     // Make the API call
     const response = await axios.post(
-      API_URL,
+      AI_API_URL,
       {
         model: "google/gemma-2-27b-it",
         messages: [
           {
             role: "system",
             content:
-              "You are an AI movie recommendation assistant. Provide a list of movies based on the user's input without asking any follow-up questions.",
+              "You are an AI movie recommendation assistant. Provide only 5 of movies based on the user's input without giving any extra texts and provide it in an array.",
           },
           {
             role: "user",
@@ -38,9 +38,6 @@ export const sendMessage = async (userMessage, dispatch) => {
 
     // Dispatch the AI response to Redux store
     dispatch(setAiResponse(botMessage));
-
-    // Return the AI response (optional, if you need to use it in the component directly)
-    return botMessage;
   } catch (error) {
     console.error(
       "Error sending message:",
