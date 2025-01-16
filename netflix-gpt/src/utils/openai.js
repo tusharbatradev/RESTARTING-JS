@@ -17,7 +17,7 @@ export const sendMessage = async (userMessage, dispatch) => {
           {
             role: "system",
             content:
-              "You are an AI movie recommendation assistant. Provide only 5 of movies based on the user's input without giving any extra texts and provide it in an array.",
+              "You are an AI movie recommendation assistant. Provide only 5 of movies based on the user's input without giving any extra texts and provide it as comma seperated.",
           },
           {
             role: "user",

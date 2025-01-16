@@ -24,6 +24,6 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
-export const OPENAI_KEY = "e8a4cce46e934479a0f67b5afc690a8b";
+export const OPENAI_KEY = "a324ac88727146d0af3bee0cd5b15fef";
 
 export const AI_API_URL = "https://api.aimlapi.com/v1/chat/completions";
