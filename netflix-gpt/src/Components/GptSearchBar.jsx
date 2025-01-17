@@ -2,11 +2,13 @@ import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendMessage } from "../utils/openai";
 import { API_OPTIONS } from "../utils/constants";
+import { addGptMovieResult } from "../utils/GptSlice";
 
 const GptSearchBar = () => {
   const searchText = useRef(null);
   const dispatch = useDispatch();
   const suggestedMovies = useSelector((store) => store.gpt.aiResponse);
+  const gptMovies = useSelector((store) => store.gpt.gptMovies);
 
   // Function to fetch movie data from TMDB API
   const searchMovieTMDB = async (movie) => {
@@ -18,11 +20,11 @@ const GptSearchBar = () => {
         API_OPTIONS
       );
 
-      const json = await response.json(); // Parse the JSON response
-      return json.results; // Correctly access the `results` property
+      const json = await response.json();
+      return json.results;
     } catch (error) {
       console.error("Error fetching movie data from TMDB:", error);
-      return []; // Return an empty array in case of an error
+      return [];
     }
   };
 
@@ -36,7 +38,6 @@ const GptSearchBar = () => {
     }
 
     try {
-      // Dispatch the sendMessage action to get suggestions
       await sendMessage(userInput, dispatch);
     } catch (error) {
       console.error("Error during GPT search:", error);
@@ -46,7 +47,8 @@ const GptSearchBar = () => {
   // React to changes in suggestedMovies
   useEffect(() => {
     const fetchTMDBResults = async () => {
-      console.log("Suggested Movies", suggestedMovies)
+      console.log("Suggested Movies", suggestedMovies);
+
       // Ensure `suggestedMovies` is an array
       const movieArray = Array.isArray(suggestedMovies)
         ? suggestedMovies
@@ -60,6 +62,9 @@ const GptSearchBar = () => {
           const tmdbResults = await Promise.all(promiseArray);
 
           console.log("TMDB Results:", tmdbResults); // Log the API results
+
+          // Dispatch to Redux to store the results
+          dispatch(addGptMovieResult(tmdbResults));
         } catch (error) {
           console.error("Error fetching TMDB results:", error);
         }
@@ -72,7 +77,11 @@ const GptSearchBar = () => {
     };
 
     fetchTMDBResults();
-  }, [suggestedMovies]);
+  }, [suggestedMovies, dispatch]);
+
+  useEffect(() => {
+    console.log("GPT Movies stored in Redux:", gptMovies);
+  }, [gptMovies]);
 
   return (
     <div className="pt-[10%] flex justify-center items-center">

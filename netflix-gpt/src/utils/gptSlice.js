@@ -5,6 +5,7 @@ const gptSlice = createSlice({
   initialState: {
     showGptSearch: false, // Controls whether the GPT search view is visible
     aiResponse: [], // Stores the AI's response (defaulted to an empty array for consistency)
+    gptMovies: null
   },
   reducers: {
     toggleGptSearchView: (state) => {
@@ -16,10 +17,13 @@ const gptSlice = createSlice({
     clearAiResponse: (state) => {
       state.aiResponse = []; // Clears the AI response and resets to an empty array
     },
+    addGptMovieResult: (state, action) => {
+      state.gptMovies = action.payload
+    }
   },
 });
 
-export const { toggleGptSearchView, setAiResponse, clearAiResponse } =
+export const { toggleGptSearchView, setAiResponse, clearAiResponse, addGptMovieResult } =
   gptSlice.actions;
 
 export default gptSlice.reducer;

@@ -6,7 +6,7 @@ import { BG_URL } from "../utils/constants";
 const GptSearch = () => {
   return (
     <div className="w-full h-screen relative">
-      <div className="absolute -z-10 w-full h-full">
+      <div className="fixed -z-10 w-full h-full">
         <img
           src={BG_URL}
           alt="Netflix Background"
